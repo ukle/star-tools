@@ -1,0 +1,175 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <title>查询结果_书法字典</title>
+    <meta name="keywords" content="书法字典"/>
+    <meta name="description"
+          content="书法艺术在我国有着几千年的历史。自古以来，书法不仅有着广泛的实用价值，而且还是我国特有的最富于民族特色和历史悠久的一门传统艺术。书法艺术的创作和欣赏，经我们的生活带来美的享受。书法字典是书法艺术集萃的体现。"/>
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href=css/style.css rel=stylesheet id=szz type=text/css>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="icon" type="image/gif" href="animated_favicon1.gif">
+    <link rel="stylesheet" href="waterfall/css/reset.css"/>
+    <link rel="stylesheet" href="waterfall/css/main.css"/>
+    <link rel="stylesheet" href="waterfall/css/woo.css"/>
+    <link rel="stylesheet" href="fangda/style/jquery.fancybox-1.3.1.css" type="text/css"/>
+    <script type="text/javascript" src="waterfall/js/jquery-1.6.1.min.js"></script>
+    <script src="waterfall/js/tabswitch.js"></script>
+    <script src="waterfall/js/woo.js"></script>
+    <script type="text/javascript" src="fangda/js/jquery.mousewheel-3.0.2.pack.js"></script>
+    <script type="text/javascript" src="fangda/js/jquery.fancybox-1.3.1.js"></script>
+    <script type="text/javascript" src="fangda/js/pngobject.js"></script>
+</head>
+<body>
+
+<div id="top-nav">
+    <div class="bd">
+
+        <div class="logo-search">
+            <div class="logo" style="overflow:hidden;">
+                <a href="http://www.shufazidian.com/" style="width:185px; height:46px;"></a>
+            </div>
+            <div class="search">
+                <input name="wd" type="text" id="wd" value="">
+                <select name="sort" id="sort">
+                    <option value="8">行　　书</option>
+                    <option value="9" selected>楷　　书</option>
+<!--                    <option value="7">草　　书</option>-->
+<!--                    <option value="6">隶　　书</option>-->
+<!--                    <option value="5">魏　　碑</option>-->
+<!--                    <option value="4">简　　牍</option>-->
+<!--                    <option value="3">篆　　书</option>-->
+<!--                    <option value="0">高清所有</option>-->
+<!--                    <option value="shiliang">设计师专用</option>-->
+<!--                    <option value="gangbi">钢　　笔</option>-->
+<!--                    <option value="zhuangke">篆　　刻</option>-->
+                </select>
+                <button type="submit" onclick="query(9)"></button>
+            </div>
+
+
+        </div>
+
+        <ol id="filters">
+
+            <li class='active'>
+                <span onclick="query(9)">楷书</span>
+            </li>
+            <li>
+                <span onclick="query(8)">行书</span>
+            </li>
+<!--            <li>-->
+<!--                <span onclick="query(7)">草书</span>-->
+<!--            </li>-->
+<!--            <li>-->
+<!--                <span onclick="query(3)">篆书</span>-->
+<!--            </li>-->
+<!--            <li>-->
+<!--                <span onclick="query('zhuangke')">篆刻</span>-->
+<!--            </li>-->
+<!--            <li>-->
+<!--                <span onclick="query(4)">简牍</span>-->
+<!--            </li>-->
+<!--            <li>-->
+<!--                <span onclick="query(6)">隶书</span>-->
+<!--            </li>-->
+<!--            <li>-->
+<!--                <span onclick="query(5)">魏碑</span>-->
+<!--            </li>-->
+<!--            <li style="width: 130px;">-->
+<!--                <span onclick="query('shiliang')">设计师专用矢量超大图</span>-->
+<!--            </li>-->
+        </ol>
+    </div>
+    <div class="Shadow">
+    </div>
+</div>
+
+<div style='height:100px;'></div>
+<div id="content">
+
+    <div id="woo-holder">
+        <!-- When gotop button is clicked, scrollbar will be positioned where the anchor is. -->
+        <a class="woo-swa" name="woo-anchor"></a>
+
+        <div class="woo-swb">
+            <div class="woo-pcont woo-masned my-pic" id="parentPic">
+
+
+            </div>
+            <div class="woo-pager"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('<div id="mycontrols"><a href="javascript:;" id="gotop"></a></div>').appendTo('body');
+
+        var conf = {
+            "arrform": ['collect'],
+            "arrsplit": '',
+            "arrmasnw": 155,
+            "arrmargin": 11,
+            "arrfmasnw": 0,
+            "arrgap": 0,
+            "gotop": '#gotop',
+            "resize": true,
+            "onScroll": function (tp) {
+                // tp current scrolltop
+                //			if( (typeof ALREADYNOTICED === 'undefined' || !ALREADYNOTICED) && tp >= 1000 ){
+                //				ALREADYNOTICED = true
+                //				alert("login")
+                //			}
+                $("a[rel=example_group]").fancybox({
+                    'transitionIn': 'none',
+                    'transitionOut': 'none',
+                    'titlePosition': 'over',
+                    'titleFormat': function (title, currentArray, currentIndex, currentOpts) {
+                        return '<span id="fancybox-title-over">' + (title.length ? ' &nbsp; ' + title : '') + '</span>';
+                        //	return '<span id="fancybox-title-over">图片 ' + (currentIndex + 1) + ' / ' + currentArray.length + (title.length ? ' &nbsp; ' + title : '') + '</span>';
+                    }
+                });
+                // document.getElementById("woo-loading").style.display="none";
+            }
+        }
+
+        // Let's go.
+        $.Woo(conf);
+
+    })
+</script>
+<script>
+    $(function () {
+        //禁用“确认重新提交表单”
+        window.history.replaceState(null, null, window.location.href);
+    })
+</script>
+<script>
+    function query(sort) {
+        if (sort === undefined) {
+            sort = 9;
+        }
+        var words = $("#wd").val();
+        var data = {words: words, sort: sort};
+        var url = "http://localhost:9990/api/tools/long/collect";
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: JSON.stringify(data),
+            contentType: "application/json",
+            complete: function (msg) {
+                $("#parentPic").html(msg.responseText);
+            }
+        });
+    }
+
+</script>
+</body>
+</html>
+
+
+
+

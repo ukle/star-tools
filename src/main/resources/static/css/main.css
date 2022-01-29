@@ -1,0 +1,362 @@
+html {
+    background-color: #e5e5e5;
+    background-image: url(../image/bg.jpg);
+    font-family: "Helvetica Neue Light", "Helvetica Neue", Arial, sans-serif;
+}
+body{margin:0px;}
+#main {overflow: hidden;}
+
+/**
+ * Grid items animation
+ */
+#tiles li {
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+}
+
+.wookmark-placeholder {
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+}
+
+/**
+ * Filters
+ */
+#filters {
+    list-style-type: none;
+    text-align: center;
+    margin: 0 5% 0 5%;
+    padding-top:3px;
+    color:#666;
+    height:25px; overflow:hidden;
+}
+
+#filters li {
+    font-size: 12px;
+    float: left;
+    padding: 3px 0 4px 0;
+    cursor: pointer;
+    margin-right:1px;
+    width: 60px;
+    -webkit-transition: all 0.15s ease-out;
+    -moz-transition: all 0.15s ease-out;
+    -o-transition: all 0.15s ease-out;
+    transition: all 0.15s ease-out;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+
+#filters li:hover {
+    background: #339900;
+    color: #ffffff;
+    text-shadow: 0px 0px 0;
+}
+
+#filters li.active {
+    background: #339900;
+    color: #ffffff;
+    text-shadow: 0px 0px 0;
+}
+
+#main {
+    margin-top: 100px;
+    position: relative;
+}
+/** General page styling
+
+header h1 {
+  text-align: center;
+  font-size: 30px;
+  font-weight: 200;
+  margin: 30px 0 10px 0;
+}
+
+header p {
+  text-align: center;
+  font-size: 14px;
+  color: #666666;
+  margin: 0;
+  font-weight: 200;
+}
+ **/
+/**
+ * Grid container
+ */
+
+#tiles {
+    list-style-type: none;
+    position: relative; /** Needed to ensure items are laid out relative to this container **/
+    margin: 0;
+    padding: 0;
+}
+
+/**
+ * Grid items
+ */
+#tiles li {
+    width: 200px;
+    background-color: #ffffff;
+    border: 1px solid #dedede;
+    border-radius: 2px;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    display: none; /** Hide items initially to avoid a flicker effect **/
+    cursor: pointer;
+    padding: 10px 10px 5px 10px;
+}
+
+#tiles li.inactive {
+    visibility: hidden;
+    opacity: 0;
+}
+
+#tiles li img {
+    display: block;
+}
+#tiles li.inactive {
+    visibility: visible;
+    opacity: .2;
+    filter: alpha(opacity=20); /* IE 7 and Earlier */
+    /* Next 2 lines IE8 */
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=20);
+}
+
+#top-nav{position:fixed;_position:relative;top:0;left:0;width:100%; min-width:1000px;z-index:999;
+    background-image: url(../image/top_bg.png);
+    background-repeat: repeat-x;
+    background-position: 0 0;
+    text-shadow: 1px 1px 0 #fff;
+}
+#top-nav .bd{
+    position: relative;
+    z-index: 1000;
+    width:100%;
+    height: 80px;
+    padding-left:50px;
+    margin: 0 auto;
+}
+#top-nav .bd .logo-search {width:100%; height:46px; margin-top:8px; margin-bottom:5px;}
+#top-nav .bd .logo-search .logo {width:186px; height:46px;background-image: url(../image/logo.jpg); float:left;}
+#top-nav .bd .logo-search .search { width:420px;height:30px; line-height:30px; float:left; margin-top:7px; margin-left:30px;}
+#top-nav .bd .logo-search .search input, .kuang .search input{
+    padding: 7px 0 7px 6px;
+    width: 200px;
+    line-height: 14px;
+    border: 1px solid #999;
+    border-right:0px;
+    display: block;
+    color: #333;
+    float:left;
+}
+#top-nav .bd .logo-search .search select, .kuang .search select{
+    padding: 5px 3px 5px 6px;
+    width: 84px;
+    height: 30px;
+    line-height: 30px;
+    border: 1px solid #999;
+    color: #333;
+    float:left;
+}
+
+#top-nav .bd .logo-search .search button, .kuang .search button{
+    padding: 5px 3px 5px 6px;
+    width: 74px;
+    height: 30px;
+    line-height: 14px;
+    border: 0px;
+    background-image: url(../image/logo.jpg);
+    display: block;
+    color: #B4B4B4;
+    float: left;
+    background-repeat: no-repeat;
+    background-position: -188px 0;
+}
+#top-nav .bd .logo-search .search button:hover, .kuang .search button:hover{
+    background-position: -188px -29px;
+}
+#top-nav a {
+    color: #666;
+    text-decoration: none;
+    display: inline-block;
+    padding: 0 6px;
+    text-shadow: 1px 1px 0 #fff;
+}
+#top-nav .bd .logo-search .content { width:450px; height:46; line-height:46px; float:right; font-size:13px;}
+#top-nav .bd .logo-search .content a:hover { font-weight:700;}
+#top-nav .Shadow {
+    height: 5px;
+    background-image: url(../image/top_bg_line.png);
+    background-repeat: repeat-x;
+}
+
+/**
+ * Grid item text
+ */
+#tiles li p {
+    color: #666;
+    font-size: 13px;
+    line-height: 20px;
+    text-align: center;
+    font-weight: 200;
+    margin: 7px 0 2px 7px;
+}
+
+footer {
+    text-align: center;
+
+}
+
+footer a {
+    color: #435DC5;
+    text-decoration: none;
+}
+
+/**
+ * Progress bar for imagesLoaded
+ */
+.progress-bar {
+    background-color: #0BC20B;
+    height: 2px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 0;
+    box-shadow: 0 1px 3px rgba(11, 194, 11, 0.2);
+    -webkit-transition: width 0.3s ease-out;
+    -moz-transition: width 0.3s ease-out;
+    -o-transition: width 0.3s ease-out;
+    transition: width 0.3s ease-out;
+}
+
+/**
+ * Placerholder css
+ */
+.wookmark-placeholder {
+    border-radius: 2px;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    background-color: #eee;
+    border: 1px solid #dedede;
+    z-index: -1;
+}
+
+.example-tiles {
+    position: relative; /** Needed to ensure items are laid out relative to this container **/
+    margin: 0;
+    padding: 0;
+}
+
+.example-tiles li {
+    display: block;
+    list-style-type: none;
+    float: left;
+    margin: 5px;
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+}
+
+.example-tiles a,
+.example-tiles a:hover {
+    color: #555;
+    background-color: #eee;
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+    width: 200px;
+    height: 200px;
+    font-size: 2em;
+    font-weight: bold;
+    text-decoration: none;
+    border: 1px solid #ddd;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+    padding: 5px 8px;
+    border-radius: 3px;
+}
+
+.example-tiles a:hover {
+    background-color: #ddd;
+}
+
+.footer {
+    width: 100%;
+    background-image: url(../image/footer_bg.png);
+    background-repeat: repeat-x;
+    color:#333;
+    font-size:13px;
+    background-color: #CACACA;
+    overflow:hidden;
+}
+.footer .help {
+    width: 300px;
+    height:150px;
+    float:left;
+}
+.footer .help li{
+    margin:5px;
+    list-style:none;
+}
+
+.footer .tip {
+    width:510px;
+    height:150px;
+    float:right;
+}
+.footer .tip li {
+    margin:5px;
+    float:left;
+    list-style:none;
+}
+.pt12 {font-size:13px;color:#666;line-height:16px;}
+.pt12 a {color:#666;}
+.pt12 a:hover {color:#000;}
+.otherMenu {font-size:13px;color:#333;}
+.otherMenu li {float:left;list-style:none;}
+.otherMenu li a:hover{color:#000;}
+.shangxieye {margin:0 auto; width:100%; height:20px; padding:10px; text-align:center;color:#333; font-size:13px;}
+.shangxieye span { cursor:pointer;}
+.shangxieye span:hover { background-color:#339900; padding:5px; color:#FFF;
+    -webkit-transition: all 0.15s ease-out;
+    -moz-transition: all 0.15s ease-out;
+    -o-transition: all 0.15s ease-out;
+    transition: all 0.15s ease-out;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+.newinfo{border:2px solid #ccc;color:#006600; margin:0 auto; width:98%; margin-bottom:10px; font-size:16px; min-width:990px; height:90px;}
+.xinwenzhang {width:680px; height:100px; overflow:hidden; margin:auto;line-height: 21px; font-size:13px; color:#333;border: 1px solid #ccc; padding:10px; margin-top:10px;}
+.xinwenzhang a {text-decoration:none; color:#333;}
+.xinwenzhang a:hover {color:#000;}
+.liebiao {margin-left:20px; float:left; height:85px; width:300px; overflow:hidden;}
+/*文章*/
+#single{list-style-type:none;width:95%;margin:0 auto; padding-bottom:20px;}
+#container{width:92%;margin:100px auto 0px auto;background:#fff;overflow:hidden;border:1px solid #99cc33;padding:2px;
+    font-size:14px;
+    font-family: "宋体";
+    line-height: 25px;
+}
+#container h3 {color:#55A7D9;}
+
+#message {margin:5px;height:100%;width:auto;padding:0 5px;height:auto;background:#fff;padding:0;}
+
+#message h3{margin:0;text-align:left;margin:5px 0;color:#55A7D9;}
+#message h3 a{text-decoration:none;color:#55a7d9;}
+#lines {height:60;border-bottom:1px dashed #ddd;list-style-type:none;margin-bottom: 20px;}
+#lines img {height:100px;border:0;}
+
+#page{text-align:center;margin:10px 5px;}
+#page li{display:inline;}
+.reply a ,#page li a{color:#99cc33;}
+#footer{height:20px;background:#fff;text-align:center;line-height:20px;border-top:3px solid #99cc33;padding-top:10px;margin:5px; font-size:12px;clear: both;}
+#footer a{color:#99cc33}
+.zidian_new_js { font-size:12px;}
+.zs320 {width:728px; height:90px;  }

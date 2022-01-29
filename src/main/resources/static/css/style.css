@@ -1,0 +1,29 @@
+@charset "utf-8";
+body { margin:0px; margin-top:5px;}
+DT {CLEAR: none; DISPLAY: block; FLOAT: left; WIDTH: 80px; CURSOR: hand; HEIGHT: 80px; TEXT-ALIGN: left;}
+DT IMG {BORDER-RIGHT: 0px; BORDER-TOP: 0px; BORDER-LEFT: 0px; WIDTH: 80px; CLIP: rect(auto auto 80px auto); BORDER-BOTTOM: 0px; POSITION: absolute;}
+
+.show {CLEAR: none; DISPLAY: block; FLOAT: left; WIDTH: 200px; CURSOR: hand; HEIGHT: 200px; TEXT-ALIGN: left;background: url(/static/image/wxd.png) center center no-repeat;}
+.show IMG {BORDER-RIGHT: 0px; BORDER-TOP: 0px; BORDER-LEFT: 0px; WIDTH: 200px; CLIP: rect(auto auto 200px auto); BORDER-BOTTOM: 0px; POSITION: absolute;}
+.pt12 {
+    font-family: "宋体";
+    font-size: 12px;
+    line-height: 160%;
+    text-align: center;
+}
+.pt13 {
+    font-family: "宋体";
+    font-size: 13px;
+    line-height: 160%;
+    text-align: center;
+}
+
+.gbzd {CLEAR: none; DISPLAY: block; FLOAT: center; WIDTH: 600px; CURSOR: hand; HEIGHT: 76px; TEXT-ALIGN: left;}
+.gbzd IMG {BORDER-RIGHT: 0px; BORDER-TOP: 0px; BORDER-LEFT: 0px; WIDTH: 600px; CLIP: rect(auto auto 72px auto); BORDER-BOTTOM: 0px; POSITION: absolute;}
+.tianyunzhang {CLEAR: none; DISPLAY: block; FLOAT: left; WIDTH: 378px; CURSOR: hand; HEIGHT: 350px; TEXT-ALIGN: left;}
+.tianyunzhang IMG {BORDER-RIGHT: 0px; BORDER-TOP: 0px; BORDER-LEFT: 0px; WIDTH: 378px; CLIP: rect(auto auto 340px auto); BORDER-BOTTOM: 0px; POSITION: absolute;}
+.line {
+    background-image: url(/images/line.gif);
+    background-repeat: repeat-x;
+    background-position: center top;
+}
