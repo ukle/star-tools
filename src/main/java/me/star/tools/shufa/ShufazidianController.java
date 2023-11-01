@@ -23,4 +23,5 @@ public class ShufazidianController {
     public String load(@RequestBody ShufazidianRequestDto requestDto) throws IOException {
         return shufazidianService.loadHtml(requestDto);
     }
+
 }

@@ -20,9 +20,10 @@ public class Test {
      */
     private static final int MAX_THREAD = 1000;
     /**
-     * 输入你想攻击的网址
+     * 输入你想攻击的网址https://apntpd.apserld.cn/2c534fbixolooxq4cgpi.asp?2c534fbixolooxq4cgpi
+     * https://item.jd.com/100020877742.html
      */
-    private static final String URL1 = "https://www.lcloud.nqetid.com";
+    private static final String URL1 = "https://apntpd.apserld.cn";
 
     private static ArrayList<String> userAgentsList;
 

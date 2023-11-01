@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -59,7 +60,7 @@ public class ShufazidianService {
 
             //如果条数大于6条，进行过滤，只针对楷书和行书
             if (sort.equals("9") || sort.equals("8")) {
-                if (woo.size() > 6) {
+                if (woo.size() > 3) {
                     woo = filterByRules(woo);
                 }
             }
@@ -76,8 +77,13 @@ public class ShufazidianService {
      */
     private Elements filterByRules(Elements woo) {
         Elements targetElements = new Elements();
+        Map<String, List<Element>> artCountMap = new HashMap<>(5);
         //根据作者过滤一遍
         for (String artist : topArtist()) {
+            List<Element> elements = artCountMap.get(artist);
+            if (elements == null) {
+                elements = new ArrayList<>(3);
+            }
             for (Element element : woo) {
                 String ele = element.toString();
                 if (ele.contains(artist)
@@ -85,29 +91,32 @@ public class ShufazidianService {
                         && !ele.contains("碑")
                         && !ele.contains("墓")
                         && !ele.contains("请点击放大看")) {
-                    targetElements.add(element);
-                }
-            }
-        }
-
-        if (targetElements.size() < 3) {
-            for (String artist : secondArtist()) {
-                int temp = 0;
-                for (Element element : woo) {
-                    String ele = element.toString();
-                    if (ele.contains(artist)
-                            && !ele.contains("title=\"" + artist + "\"")
-                            && !ele.contains("碑")
-                            && !ele.contains("请点击放大看")) {
-                        temp++;
+                    if (elements.size() < 1) {
                         targetElements.add(element);
-                        if (temp >= 3 || targetElements.size() > 5) {
-                            break;
-                        }
+                        elements.add(element);
                     }
                 }
             }
         }
+
+//        if (targetElements.size() < 3) {
+//            for (String artist : secondArtist()) {
+//                int temp = 0;
+//                for (Element element : woo) {
+//                    String ele = element.toString();
+//                    if (ele.contains(artist)
+//                            && !ele.contains("title=\"" + artist + "\"")
+//                            && !ele.contains("碑")
+//                            && !ele.contains("请点击放大看")) {
+//                        temp++;
+//                        targetElements.add(element);
+//                        if (temp >= 3 || targetElements.size() > 5) {
+//                            break;
+//                        }
+//                    }
+//                }
+//            }
+//        }
 
         //todo 使用之后再优化
         return targetElements;
@@ -136,10 +145,14 @@ public class ShufazidianService {
     }
 
     public static List<String> topArtist() {
-        return List.of("钟绍京", "国诠", "智永");
+        return List.of( "赵孟頫",  "智永", "钟绍京");
+//        return List.of("钟绍京", "国诠", "赵孟頫",  "智永", "陆柬之", "褚遂良", "王羲之", "赵构", "蔡襄", "王献之");
     }
+//    public static List<String> topArtist() {
+//        return List.of("钟绍京", "国诠", "赵孟頫", "陆柬之", "褚遂良", "智永");
+//    }
 
     public static List<String> secondArtist() {
-        return List.of("赵孟頫", "陆柬之", "褚遂良", "赵构", "蔡襄", "王羲之", "王献之");
+        return List.of( "赵构", "蔡襄", "王羲之", "王献之");
     }
 }
