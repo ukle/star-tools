@@ -8,10 +8,7 @@ import org.jsoup.select.Elements;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author Star Chou
@@ -91,12 +88,28 @@ public class ShufazidianService {
                         && !ele.contains("碑")
                         && !ele.contains("墓")
                         && !ele.contains("请点击放大看")) {
-                    if (elements.size() < 1) {
-                        targetElements.add(element);
+                    if (elements.size() < 3) {
+                        Elements allElements = element.getAllElements();
+                        for (Element allElement : allElements) {
+                            Elements img = allElement.getElementsByTag("img");
+                            if (img != null) {
+                                Element element1 = img.get(0);
+                                String s = element1.toString();
+                                String replace = s.replace("src=\"", "src=\"https://www.shufazidian.com");
+                                Element parent = element1.parent();
+                                Elements img1 = parent.getElementsByTag("img");
+                                if (img1 != null) {
+                                    img1.remove();
+                                }
+                                parent.append(replace);
+                                break;
+                            }
+                        }
                         elements.add(element);
                     }
                 }
             }
+            targetElements.addAll(elements);
         }
 
 //        if (targetElements.size() < 3) {
@@ -129,7 +142,7 @@ public class ShufazidianService {
      * @return
      */
     private List<String> requestToSFZD(ShufazidianRequestDto requestDto) {
-        String url = "http://www.shufazidian.com";
+        String url = "https://www.shufazidian.com/s.php";
         String words = requestDto.getWords();
         if (words.isBlank()) {
             return new ArrayList<>();
@@ -145,14 +158,14 @@ public class ShufazidianService {
     }
 
     public static List<String> topArtist() {
-        return List.of( "赵孟頫",  "智永", "钟绍京");
-//        return List.of("钟绍京", "国诠", "赵孟頫",  "智永", "陆柬之", "褚遂良", "王羲之", "赵构", "蔡襄", "王献之");
+//        return Arrays.asList( "赵孟頫",  "智永", "国诠", "钟绍京", "陆柬之");
+        return List.of("钟绍京", "国诠", "赵孟頫",  "智永", "陆柬之", "褚遂良", "王羲之", "赵构", "蔡襄", "王献之");
     }
 //    public static List<String> topArtist() {
 //        return List.of("钟绍京", "国诠", "赵孟頫", "陆柬之", "褚遂良", "智永");
 //    }
 
     public static List<String> secondArtist() {
-        return List.of( "赵构", "蔡襄", "王羲之", "王献之");
+        return Arrays.asList( "赵构", "蔡襄", "王羲之", "王献之");
     }
 }
