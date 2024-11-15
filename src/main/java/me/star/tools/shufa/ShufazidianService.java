@@ -92,17 +92,19 @@ public class ShufazidianService {
                         Elements allElements = element.getAllElements();
                         for (Element allElement : allElements) {
                             Elements img = allElement.getElementsByTag("img");
-                            if (img != null) {
+                            if (img != null && !img.isEmpty()) {
                                 Element element1 = img.get(0);
                                 String s = element1.toString();
-                                String replace = s.replace("src=\"", "src=\"https://www.shufazidian.com");
-                                Element parent = element1.parent();
-                                Elements img1 = parent.getElementsByTag("img");
-                                if (img1 != null) {
-                                    img1.remove();
+                                if (!s.contains("http")) {
+                                    String replace = s.replace("src=\"", "src=\"https://www.shufazidian.com");
+                                    Element parent = element1.parent();
+                                    Elements img1 = parent.getElementsByTag("img");
+                                    if (img1 != null) {
+                                        img1.remove();
+                                    }
+                                    parent.append(replace);
+                                    break;
                                 }
-                                parent.append(replace);
-                                break;
                             }
                         }
                         elements.add(element);
